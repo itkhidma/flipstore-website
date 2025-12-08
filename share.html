@@ -3,60 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlipStore - Opening Seller...</title>
+    <title>FlipStore - Seller Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
         .container {
             background: white;
-            color: #333;
-            padding: 40px;
-            border-radius: 15px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 400px;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
         }
+        
         .logo {
-            font-size: 48px;
-            margin-bottom: 20px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
         }
+        
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .btn-secondary:hover {
+            background: #ebebeb;
+        }
+        
+        .divider {
+            margin: 20px 0;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .app-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            display: none;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 30px;
+            height: 30px;
             animation: spin 1s linear infinite;
-            margin: 20px auto;
+            margin: 0 auto 20px;
         }
+        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            background: #667eea;
+        
+        .hidden {
+            display: none;
+        }
+        
+        .badge {
+            background: #4CAF50;
             color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="logo">🛍️</div>
-        <h2>Opening FlipStore...</h2>
-        <div class="spinner"></div>
-        <p id="message">Redirecting to seller page...</p>
-        <a href="#" id="fallback" class="btn" style="display:none;">Open in Play Store</a>
+        
+        <!-- Initial View -->
+        <div id="initialView">
+            <span class="badge">FlipStore Seller</span>
+            <h1 id="sellerName">Loading...</h1>
+            <p id="sellerDescription">View products and deals from this seller</p>
+            
+            <!-- ✅ User must CLICK to open app -->
+            <a href="#" id="openAppBtn" class="btn btn-primary">
+                <span class="app-icon">📱</span>
+                Open in FlipStore App
+            </a>
+            
+            <div class="divider">OR</div>
+            
+            <a href="https://play.google.com/store/apps/details?id=com.flipstore.user" 
+               class="btn btn-secondary"
+               target="_blank">
+                <span class="app-icon">⬇️</span>
+                Download FlipStore
+            </a>
+        </div>
+        
+        <!-- Loading View -->
+        <div id="loadingView" class="hidden">
+            <div class="spinner"></div>
+            <h1>Opening FlipStore...</h1>
+            <p>If the app doesn't open automatically, tap the button below</p>
+            <a href="https://play.google.com/store/apps/details?id=com.flipstore.user" 
+               class="btn btn-secondary"
+               target="_blank">
+                Open Play Store
+            </a>
+        </div>
+        
+        <!-- Error View -->
+        <div id="errorView" class="hidden">
+            <div style="font-size: 60px; margin-bottom: 20px;">⚠️</div>
+            <h1>Invalid Link</h1>
+            <p>This seller link appears to be invalid</p>
+            <a href="https://play.google.com/store/apps/details?id=com.flipstore.user" 
+               class="btn btn-primary"
+               target="_blank">
+                Download FlipStore
+            </a>
+        </div>
     </div>
 
     <script>
@@ -64,25 +195,66 @@
         const urlParams = new URLSearchParams(window.location.search);
         const sellerId = urlParams.get('id');
         
-        if (!sellerId) {
-            document.getElementById('message').textContent = 'Invalid seller link';
-            document.getElementById('fallback').style.display = 'inline-block';
-            document.getElementById('fallback').href = 'https://play.google.com/store/apps/details?id=com.flipstore.user';
+        // Elements
+        const initialView = document.getElementById('initialView');
+        const loadingView = document.getElementById('loadingView');
+        const errorView = document.getElementById('errorView');
+        const openAppBtn = document.getElementById('openAppBtn');
+        const sellerNameEl = document.getElementById('sellerName');
+        
+        // Check if seller ID exists
+        if (!sellerId || sellerId.trim() === '') {
+            initialView.classList.add('hidden');
+            errorView.classList.remove('hidden');
         } else {
-            // Try to open app with deep link
+            // Update seller name (you can fetch from API later)
+            sellerNameEl.textContent = 'View Seller Products';
+            
+            // ✅ Set deep link on button click
             const deepLink = `flipstore://seller?id=${sellerId}`;
-            const playStoreLink = 'https://play.google.com/store/apps/details?id=com.flipstore.user';
+            openAppBtn.href = deepLink;
             
-            // Attempt to open app
-            window.location.href = deepLink;
-            
-            // Show fallback button after 2 seconds
-            setTimeout(() => {
-                document.getElementById('message').textContent = "Don't have the app?";
-                document.getElementById('fallback').style.display = 'inline-block';
-                document.getElementById('fallback').href = playStoreLink;
-            }, 2000);
+            // ✅ Handle button click
+            openAppBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Show loading
+                initialView.classList.add('hidden');
+                loadingView.classList.remove('hidden');
+                loadingView.querySelector('.spinner').style.display = 'block';
+                
+                // Try to open app
+                window.location.href = deepLink;
+                
+                // After 3 seconds, assume app didn't open
+                setTimeout(() => {
+                    // If still on page, show download option
+                    loadingView.querySelector('h1').textContent = "App Not Installed";
+                    loadingView.querySelector('p').textContent = "Download FlipStore to view this seller";
+                    loadingView.querySelector('.spinner').style.display = 'none';
+                }, 3000);
+            });
         }
+        
+        // ✅ Optional: Auto-fetch seller details from your backend
+        // Uncomment and modify when you have an API
+        /*
+        async function fetchSellerDetails(sellerId) {
+            try {
+                const response = await fetch(`https://your-api.com/seller/${sellerId}`);
+                const data = await response.json();
+                sellerNameEl.textContent = data.sellerName || 'View Seller';
+                document.getElementById('sellerDescription').textContent = 
+                    data.shopName || 'View products and deals';
+            } catch (error) {
+                console.error('Error fetching seller:', error);
+            }
+        }
+        
+        if (sellerId) {
+            fetchSellerDetails(sellerId);
+        }
+        */
     </script>
 </body>
 </html>
