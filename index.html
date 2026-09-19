@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FlipStore policies and seller sharing links.">
+    <title>FlipStore</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #1f2937;
+            --muted: #64748b;
+            --accent: #4f46e5;
+            --surface: #ffffff;
+            --background: #eef2ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 24px;
+            display: grid;
+            place-items: center;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: linear-gradient(135deg, var(--background), #f8fafc);
+        }
+
+        main {
+            width: min(100%, 720px);
+            padding: clamp(28px, 6vw, 56px);
+            background: var(--surface);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(30, 41, 59, 0.12);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            letter-spacing: -0.04em;
+        }
+
+        p {
+            margin: 0 0 32px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        h2 {
+            margin: 32px 0 12px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+
+        nav {
+            display: grid;
+            gap: 10px;
+        }
+
+        a {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 16px;
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid #c7d2fe;
+            border-radius: 10px;
+        }
+
+        a:hover,
+        a:focus-visible {
+            color: #3730a3;
+            background: #eef2ff;
+            outline: none;
+        }
+
+        a span {
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>FlipStore</h1>
+        <p>Official policies and sharing resources for FlipStore customers, sellers, and delivery partners.</p>
+
+        <h2>Customer resources</h2>
+        <nav aria-label="Customer resources">
+            <a href="privacy-policy.html">Privacy Policy <span>→</span></a>
+            <a href="terms-of-services.html">Terms of Service <span>→</span></a>
+            <a href="refund-policy.html">Refund &amp; Returns Policy <span>→</span></a>
+            <a href="cancellation-policy.html">Cancellation Policy <span>→</span></a>
+        </nav>
+
+        <h2>Partner resources</h2>
+        <nav aria-label="Partner resources">
+            <a href="delivery/privacy-policy.html">Delivery Partner Privacy Policy <span>→</span></a>
+            <a href="delivery/terms-of-service.html">Delivery Partner Agreement <span>→</span></a>
+            <a href="seller/privacy-policy.html">Vendor Privacy Policy <span>→</span></a>
+            <a href="seller/terms-of-service.html">Vendor Agreement <span>→</span></a>
+            <!-- <a href="share.html">Seller Share Link <span>→</span></a> -->
+        </nav>
+    </main>
+</body>
+</html>
